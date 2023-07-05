@@ -1,0 +1,45 @@
+{%extends 'base.html'%}
+{%block title_block%}
+
+<title>movie-list</title>
+
+{%endblock%}
+{%block body_block%}
+
+<div class="container">
+        <table class="table table-striped">
+            <tr>
+                <th>Sl.No</th>
+                <th>MovieName</th>
+                <th>Year</th>
+                <th>Runtime</th>
+                <th>Language</th>
+                <th>Genres</th>
+                <th>Poster</th>
+                <th>Action</th>
+            </tr>
+            {%for m in movies%}
+            <tr>
+                <td>{{forloop.counter}}</td>
+                
+                <td>{{m.movie_name}}</td>
+                <td>{{m.year}}</td>
+                <td>{{m.runtime}}</td>
+                <td>{{m.language}}</td>
+                <td>{{m.genres}}</td>
+                <td>
+                    
+                    <img src="{{m.poster_image.url}}" alt="" width="100%" height="100px">
+                
+                </td>
+                <td>
+                    <a href="{%url 'movie-detail' m.id%}" class="btn btn-outline-dark">View</a>
+                </td>
+
+            </tr>
+            {%endfor%}
+
+        </table>
+   
+    </div>
+{%endblock%}
